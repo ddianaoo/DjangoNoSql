@@ -6,4 +6,7 @@ import boto3
 
 @api_view(['GET'])
 def say_hello(request):
-    return Response({"test": "data"})
+    db = boto3.resource('dynamodb')
+    table = db.Table('drinks')
+    drinks = table.scan()
+    return Response({'drinks': drinks.get('Items')})
