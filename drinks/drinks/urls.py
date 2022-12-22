@@ -20,5 +20,6 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', say_hello)
+    path('', say_hello),
+    path('<str:name>', drink_info),
 ]
